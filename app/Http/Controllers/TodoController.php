@@ -46,7 +46,7 @@ class TodoController extends Controller
         ];
 
         Todo::create($data);
-        return redirect('/todo')->with('suksesBro', 'Berhasil simpan data');
+        return redirect('')->route('todo')->with('suksesBro', 'Berhasil simpan data');
     }
 
     /**
