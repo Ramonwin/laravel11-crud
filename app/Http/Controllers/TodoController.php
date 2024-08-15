@@ -48,7 +48,7 @@ class TodoController extends Controller
         ];
 
         Todo::create($data);
-        return redirect()->route('todo')->with('suksesBro', 'Berhasil simpan data');
+        return to_route('todo')->with('suksesBro', 'Berhasil simpan data');
     }
 
     /**
@@ -90,14 +90,15 @@ class TodoController extends Controller
         ];
 
         Todo::where('id', $id)->update($data);
-        return redirect()->route('todo')->with('suksesBro', 'Data berhasil di upadte');
+        return to_route('todo')->with('suksesBro', 'Data berhasil di upadte');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Todo $todo)
+    public function destroy(string $id)
     {
-        //
+        Todo::where('id', $id)->delete();
+        return to_route('todo')->with('suksesBro', 'berhasil menghapus data');
     }
 }
