@@ -70,9 +70,27 @@ class TodoController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Todo $todo)
+    public function update(Request $request, string $id)
     {
-        //
+        //! proses untuk validasi
+        $request->validate(
+            [
+                'task' => 'required|min:3|max:25'
+            ],
+            [
+                'task.required' => 'Field task wajib diisi',
+                'task.min' => 'Minimal isian task adalah 3 karakter',
+                'task.max' => 'Minimal isian task adalah 25 karakter',
+            ]
+        );
+
+        $data = [
+            'task' => $request->input('task'),
+            'is_done' => $request->input('is_done')
+        ];
+
+        Todo::where('id', $id)->update($data);
+        return redirect('/todo')->with('suksesBro', 'Data berhasil di upadte');
     }
 
     /**
