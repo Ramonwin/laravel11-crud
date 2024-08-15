@@ -40,6 +40,13 @@ class TodoController extends Controller
                 'task.max' => 'Minimal isian task adalah 25 karakter',
             ]
         );
+
+        $data = [
+            'task' => $request->input('task')
+        ];
+
+        Todo::create($data);
+        return redirect('/todo')->with('suksesBro', 'Berhasil simpan data');
     }
 
     /**

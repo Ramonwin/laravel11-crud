@@ -40,6 +40,12 @@
             <div class="col-md-8">
                 <div class="card mb-3">
                     <div class="card-body">
+                        @if (session('suksesBro'))
+                            <div class="alert alert-success">
+                                {{ session('suksesBro') }}
+                            </div>
+                        @endif
+
                         @if ($errors->any())
                             <div class="alert alert-danger">
                                 <ul>
