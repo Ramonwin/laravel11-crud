@@ -146,6 +146,7 @@
 
                         </ul>
 
+                        {{ $data->links()  }}
 
                     </div>
                 </div>
