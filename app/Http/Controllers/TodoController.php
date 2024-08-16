@@ -12,7 +12,7 @@ class TodoController extends Controller
      */
     public function index()
     {
-        $max_data = 3;
+        $max_data = 5;
 
 
         if (request('search')) {
