@@ -10,13 +10,13 @@ class TodoController extends Controller
     /**
      * Display a listing of the resource.
      */
+
     public function index()
     {
         $max_data = 5;
-
-
         if (request('search')) {
             $data = Todo::where('task', 'like', '%' . request('search') . '%')->paginate($max_data)->withQueryString();
+            //! withQueryString untuk teks yang dicari sebelumnya tidak hilang
         } else {
             $data = Todo::orderBy('task', 'asc')->paginate($max_data);
         }
@@ -27,6 +27,7 @@ class TodoController extends Controller
     /**
      * Show the form for creating a new resource.
      */
+
     public function create()
     {
         //
